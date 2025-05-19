@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <style>
+      body {
+        width: 100vw;
+      }
+      input {
+        background-color: aqua;
+        width: 30%;
+      }
+      form {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        .input-field {
+          height: 50px;
+        }
+        .radio {
+          display: flex;
+          flex-direction: row;
+          width: fit-content;
+        }
+      }
+    </style>
+    <meta charset="utf-8" />
+    <title>Daten in MySQL-Datenbank speichern</title>
+  </head>
+  <body>
+    <h1>Apfelkauf im Obstladen</h1>
+    <p>Bitte...</p>
+    <form action="" method="">
+      Vorname: <input type="text" name="vorname" /> Nachname:
+      <input class="input-field" type="text" name="nachname" /> Wohnort:
+      <input class="input-field" type="text" name="ort" /> Menge (in kg):
+      <input class="input-field" type="text" size="5" name="menge" />
+      Apfelsorte: <br />
+      <div class="radios">
+        <input
+          class="radio"
+          type="radio"
+          name="sorte"
+          value="Jonagold"
+          checked />
+        Jonagold
+        <br />
+        <input class="radio" type="radio" name="sorte" value="Gala" /> Gala
+        <br />
+        <input class="radio" type="radio" name="sorte" value="Elstar" /> Elstar
+        <br />
+      </div>
+
+      <input type="button" value="Abschicken" />
+      <input type="reset" value="Reset" />
+    </form>
+  </body>
+</html>
