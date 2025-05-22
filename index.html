@@ -1,4 +1,3 @@
-<!-- filepath: /home/hannes/code/SchoolPHPToDB/index.php -->
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -6,9 +5,9 @@
     <title>Schwarzes Brett</title>
     <style>
       body {
-        margin: 0;
-        font-family: Arial, sans-serif;
         background: #f4f4f4;
+        font-family: Arial, sans-serif;
+        margin: 0;
       }
       .navbar {
         background: #222;
@@ -22,24 +21,6 @@
         font-size: 1.5em;
         font-weight: bold;
         letter-spacing: 1px;
-      }
-      .navbar .login-form {
-        display: flex;
-        gap: 0.5em;
-      }
-      .navbar input[type='text'],
-      .navbar input[type='password'] {
-        padding: 0.3em 0.5em;
-        border: none;
-        border-radius: 3px;
-      }
-      .navbar input[type='submit'] {
-        background: #4caf50;
-        color: #fff;
-        border: none;
-        padding: 0.3em 1em;
-        border-radius: 3px;
-        cursor: pointer;
       }
       .container {
         max-width: 800px;
@@ -115,34 +96,36 @@
   <body>
     <nav class="navbar">
       <div class="logo">Schwarzes Brett</div>
-      <form class="login-form" action="#" method="post">
-        <input
-          type="text"
-          name="username"
-          placeholder="Benutzername"
-          required />
-        <input
-          type="password"
-          name="password"
-          placeholder="Passwort"
-          required />
-        <input type="submit" value="Login" />
-        <button
-          type="button"
-          onclick="window.location.href='signup.html'"
-          style="
-            background: #2196f3;
-            color: #fff;
-            border: none;
-            padding: 0.3em 1em;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-left: 0.5em;
-          ">
-          Sign In
-        </button>
-      </form>
+      <a
+        href="add_posting.html"
+        style="
+          background: #4caf50;
+          color: #fff;
+          padding: 0.4em 1.2em;
+          border-radius: 4px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1em;
+          transition: background 0.2s;
+          margin-left: auto;
+        ">
+        + Neue Anzeige
+      </a>
     </nav>
+    <div
+      id="notification"
+      style="
+        display: none;
+        margin: 1em auto;
+        max-width: 600px;
+        padding: 1em 1.5em;
+        background: #ffebee;
+        color: #b71c1c;
+        border: 1px solid #e57373;
+        border-radius: 6px;
+        font-weight: bold;
+        text-align: center;
+      "></div>
     <div class="container">
       <h1>Willkommen beim Schwarzen Brett!</h1>
       <div style="margin-bottom: 1em">
@@ -160,14 +143,25 @@
       </div>
     </div>
     <script>
-      let messagesData = [];
+      // Login-Fehlerbenachrichtigung anzeigen
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('login') === 'fail') {
+          const notif = document.getElementById('notification');
+          notif.textContent =
+            'Login fehlgeschlagen: Benutzername oder Passwort falsch.';
+          notif.style.display = 'block';
+        }
+      })();
 
+      // Message board logic (wie gehabt)
+      let messagesData = [];
       function renderMessages(sortBy) {
         let data = [...messagesData];
         if (sortBy === 'rubrik') {
           data.sort(
             (a, b) =>
-              a.rubrik.localeCompare(b.rubrik) || b.datum.localeCompare(a.datum) // innerhalb der Rubrik nach Datum absteigend
+              a.rubrik.localeCompare(b.rubrik) || b.datum.localeCompare(a.datum)
           );
         } else {
           data.sort((a, b) => b.datum.localeCompare(a.datum));
@@ -180,14 +174,14 @@
         board.innerHTML = data
           .map(
             (msg) => `
-            <div class="message">
-              <div class="rubrik">${msg.rubrik}</div>
-              <div class="titel">${msg.titel}</div>
-              <span class="author">${msg.name}</span>
-              ${msg.datum ? `<span class="date">${msg.datum}</span>` : ''}
-              <div class="content">${msg.nachricht || ''}</div>
-            </div>
-          `
+      <div class="message">
+        <div class="rubrik">${msg.rubrik}</div>
+        <div class="titel">${msg.titel}</div>
+        <span class="author">${msg.name}</span>
+        ${msg.datum ? `<span class="date">${msg.datum}</span>` : ''}
+        <div class="content">${msg.nachricht || ''}</div>
+      </div>
+    `
           )
           .join('');
       }
