@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_close($conn);
 
     // Erfolgreich
-    header("Location: index.html?posting=success");
+    header("Location: index.php");
     exit;
 } else {
     header("Location: add_posting.html");

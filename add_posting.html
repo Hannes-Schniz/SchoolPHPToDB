@@ -129,7 +129,7 @@
     <nav class="navbar">
       <div class="logo">Schwarzes Brett</div>
       <a
-        href="index.html"
+        href="index.php"
         style="color: #fff; text-decoration: none; font-weight: bold"
         >Zurück</a
       >
@@ -248,23 +248,9 @@
         </div>
         <input type="submit" value="Anzeige erstellen" />
       </form>
-      <a class="back-link" href="index.html"
+      <a class="back-link" href="index.php"
         >&larr; Zurück zum Schwarzen Brett</a
       >
     </div>
-    <script>
-      // Rubriken dynamisch laden
-      fetch('get_rubriken.php')
-        .then((response) => response.json())
-        .then((data) => {
-          const select = document.getElementById('rubrik');
-          data.forEach((rubrik) => {
-            const option = document.createElement('option');
-            option.value = rubrik.rubriknummer;
-            option.textContent = rubrik.bezeichnung;
-            select.appendChild(option);
-          });
-        });
-    </script>
   </body>
 </html>
