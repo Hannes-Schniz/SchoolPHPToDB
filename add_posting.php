@@ -8,14 +8,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $nummer = trim($_POST['nummer'] ?? '');
-    $rubrik = intval($_POST['rubrik'] ?? 0);
+    // Rubriken als Array holen (wegen multiple)
+    $rubriken = isset($_POST['rubrik']) ? $_POST['rubrik'] : [];
+    if (!is_array($rubriken)) {
+        $rubriken = [$rubriken];
+    }
     $ueberschrift = trim($_POST['anzeigeueberschrift'] ?? '');
     $text = trim($_POST['anzeigetext'] ?? '');
 
     // Validierung
     if (
         $name === '' || $email === '' || $nummer === '' ||
-        $rubrik < 1 || $ueberschrift === '' || $text === ''
+        count($rubriken) < 1 || $ueberschrift === '' || $text === ''
     ) {
         die('Bitte alle Felder korrekt ausfüllen.');
     }
@@ -58,11 +62,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $anzeigenummer = mysqli_insert_id($conn);
 
-    // Rubrikzuordnung anlegen
+    // Mehrere Rubriken zuordnen
     $stmt = mysqli_prepare($conn, "INSERT INTO rubrikzuordnung (anzeigenummer, rubriknummer) VALUES (?, ?)");
-    mysqli_stmt_bind_param($stmt, "ii", $anzeigenummer, $rubrik);
-    if (!mysqli_stmt_execute($stmt)) {
-        die("Fehler beim Zuordnen der Rubrik.");
+    foreach ($rubriken as $rubrik) {
+        $rubrik = intval($rubrik);
+        mysqli_stmt_bind_param($stmt, "ii", $anzeigenummer, $rubrik);
+        if (!mysqli_stmt_execute($stmt)) {
+            die("Fehler beim Zuordnen der Rubrik.");
+        }
     }
     mysqli_stmt_close($stmt);
     mysqli_close($conn);

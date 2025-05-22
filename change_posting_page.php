@@ -154,6 +154,7 @@
           $rubrik = htmlspecialchars($row['rubriknummer']);
           $ueberschrift = htmlspecialchars($row['anzeigeueberschrift']);
           $anzeigetext = htmlspecialchars($row['anzeigetext']);
+          #TODO: Mehrere Rubriken
         }
       ?>
       <form action="change_posting.php" method="post" autocomplete="off">

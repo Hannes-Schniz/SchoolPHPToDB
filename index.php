@@ -153,6 +153,7 @@
     <div style="display: flex">
       <div class="rubrik-sidebar">
         <div class="rubrik-buttons">
+          <a href="?">Alles</a>
           <a href="?rubrik=1">Elektronik</a>
           <a href="?rubrik=2">Möbel</a>
           <a href="?rubrik=3">Fahrzeuge</a>
