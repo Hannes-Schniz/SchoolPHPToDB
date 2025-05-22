@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Neue Anzeige erstellen – Schwarzes Brett</title>
+    <style>
+      body {
+        background: #f4f4f4;
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+      .navbar {
+        background: #222;
+        color: #fff;
+        padding: 0.5em 2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbar .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .posting-container {
+        max-width: 500px;
+        margin: 3em auto;
+        background: #fff;
+        padding: 2.5em 2.5em 2em 2.5em;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        margin-top: 0;
+        text-align: center;
+        color: #222;
+        margin-bottom: 1.5em;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2em;
+      }
+      .form-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1em;
+      }
+      .form-label {
+        flex: 0 0 140px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0;
+        text-align: right;
+      }
+      .form-field {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+      }
+      input[type='text'],
+      input[type='email'],
+      textarea,
+      select {
+        padding: 0.6em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1em;
+        background: #f9f9f9;
+        transition: border 0.2s;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      input[type='text']:focus,
+      input[type='email']:focus,
+      textarea:focus,
+      select:focus {
+        border: 1.5px solid #4caf50;
+        outline: none;
+        background: #fff;
+      }
+      textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+      input[type='submit'] {
+        background: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 0.9em 0;
+        border-radius: 4px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1em;
+        transition: background 0.2s;
+        width: 100%;
+      }
+      input[type='submit']:hover {
+        background: #388e3c;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1.5em;
+        color: #2196f3;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 600px) {
+        .posting-container {
+          padding: 1em;
+        }
+        .form-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .form-label {
+          text-align: left;
+          margin-bottom: 0.3em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Schwarzes Brett</div>
+      <a
+        href="index.html"
+        style="color: #fff; text-decoration: none; font-weight: bold"
+        >Zurück</a
+      >
+    </nav>
+    <div class="posting-container">
+      <h2>Neue Anzeige erstellen</h2>
+      <form action="add_posting.php" method="post" autocomplete="off">
+        <div class="form-row">
+          <label for="name" class="form-label">Ihr Name</label>
+          <div class="form-field">
+            <input type="text" id="name" name="name" maxlength="50" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="email" class="form-label">E-Mail</label>
+          <div class="form-field">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              maxlength="255"
+              required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="nummer" class="form-label">Telefonnummer</label>
+          <div class="form-field">
+            <input
+              type="text"
+              id="nummer"
+              name="nummer"
+              maxlength="15"
+              required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="rubrik" class="form-label">Rubrik</label>
+          <div class="form-field">
+            <select id="rubrik" name="rubrik" required>
+              <option value="">Bitte wählen...</option>
+              <option value="1">Elektronik</option>
+              <option value="2">Möbel</option>
+              <option value="3">Fahrzeuge</option>
+              <option value="4">Immobilien</option>
+              <option value="5">Stellenangebote</option>
+              <option value="6">Stellengesuche</option>
+              <option value="7">Dienstleistungen</option>
+              <option value="8">Freizeit &amp; Hobby</option>
+              <option value="9">Haustiere</option>
+              <option value="10">Bekleidung</option>
+              <option value="11">Kinder &amp; Baby</option>
+              <option value="12">Musikinstrumente</option>
+              <option value="13">Sport &amp; Fitness</option>
+              <option value="14">Bücher &amp; Zeitschriften</option>
+              <option value="15">Bürobedarf</option>
+              <option value="16">Garten &amp; Pflanzen</option>
+              <option value="17">Spielzeug</option>
+              <option value="18">Basteln &amp; Handarbeit</option>
+              <option value="19">Antiquitäten &amp; Kunst</option>
+              <option value="20">Sammlungen</option>
+              <option value="21">Heimwerken</option>
+              <option value="22">Computer &amp; Zubehör</option>
+              <option value="23">Smartphones &amp; Tablets</option>
+              <option value="24">Kameras &amp; Optik</option>
+              <option value="25">Tickets &amp; Veranstaltungen</option>
+              <option value="26">Reisen &amp; Urlaub</option>
+              <option value="27">Lebensmittel</option>
+              <option value="28">Haushaltsgeräte</option>
+              <option value="29">Werkzeuge</option>
+              <option value="30">Jobs auf Zeit</option>
+              <option value="31">Praktika &amp; Ausbildung</option>
+              <option value="32">Nachhilfe &amp; Unterricht</option>
+              <option value="33">Fahrgemeinschaften</option>
+              <option value="34">Verloren &amp; Gefunden</option>
+              <option value="35">Geschenke &amp; Umsonst</option>
+              <option value="36">Tauschangebote</option>
+              <option value="37">Pflege &amp; Betreuung</option>
+              <option value="38">Umzüge &amp; Transport</option>
+              <option value="39">Reparaturen &amp; Handwerker</option>
+              <option value="40">IT-Dienstleistungen</option>
+              <option value="41">Grafik &amp; Design</option>
+              <option value="42">Texter &amp; Übersetzer</option>
+              <option value="43">Rechtsberatung</option>
+              <option value="44">Steuerberatung</option>
+              <option value="45">Immobilienangebote</option>
+              <option value="46">Immobiliensuche</option>
+              <option value="47">Fahrzeugvermietung</option>
+              <option value="48">Haushaltshilfe</option>
+              <option value="49">Tiersitting</option>
+              <option value="50">Sonstiges</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="anzeigeueberschrift" class="form-label"
+            >Überschrift</label
+          >
+          <div class="form-field">
+            <input
+              type="text"
+              id="anzeigeueberschrift"
+              name="anzeigeueberschrift"
+              maxlength="50"
+              required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="anzeigetext" class="form-label">Anzeigentext</label>
+          <div class="form-field">
+            <textarea
+              id="anzeigetext"
+              name="anzeigetext"
+              maxlength="255"
+              required></textarea>
+          </div>
+        </div>
+        <input type="submit" value="Anzeige erstellen" />
+      </form>
+      <a class="back-link" href="index.html"
+        >&larr; Zurück zum Schwarzen Brett</a
+      >
+    </div>
+    <script>
+      // Rubriken dynamisch laden
+      fetch('get_rubriken.php')
+        .then((response) => response.json())
+        .then((data) => {
+          const select = document.getElementById('rubrik');
+          data.forEach((rubrik) => {
+            const option = document.createElement('option');
+            option.value = rubrik.rubriknummer;
+            option.textContent = rubrik.bezeichnung;
+            select.appendChild(option);
+          });
+        });
+    </script>
+  </body>
+</html>
