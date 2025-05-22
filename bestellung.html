@@ -1,58 +1,22 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
-    <style>
-      body {
-        width: 100vw;
-      }
-      input {
-        background-color: aqua;
-        width: 30%;
-      }
-      form {
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
-        .input-field {
-          height: 50px;
-        }
-        .radio {
-          display: flex;
-          flex-direction: row;
-          width: fit-content;
-        }
-      }
-    </style>
     <meta charset="utf-8" />
     <title>Daten in MySQL-Datenbank speichern</title>
   </head>
-  <body>
-    <h1>Apfelkauf im Obstladen</h1>
-    <p>Bitte...</p>
-    <form action="" method="">
-      Vorname: <input type="text" name="vorname" /> Nachname:
-      <input class="input-field" type="text" name="nachname" /> Wohnort:
-      <input class="input-field" type="text" name="ort" /> Menge (in kg):
-      <input class="input-field" type="text" size="5" name="menge" />
-      Apfelsorte: <br />
-      <div class="radios">
-        <input
-          class="radio"
-          type="radio"
-          name="sorte"
-          value="Jonagold"
-          checked />
-        Jonagold
-        <br />
-        <input class="radio" type="radio" name="sorte" value="Gala" /> Gala
-        <br />
-        <input class="radio" type="radio" name="sorte" value="Elstar" /> Elstar
-        <br />
-      </div>
-
-      <input type="button" value="Abschicken" />
-      <input type="reset" value="Reset" />
-    </form>
-  </body>
+  <h3>Apfelkauf im Obstladen</h3>
+  <p>Bitte geben Sie folgende Daten für Ihre Bestellung ein:</p>
+  <form action="bestellung.php" method="post">
+    Vorname: <input type="text" name="vorname"><p>
+    Nachname: <input type="text" name="nachname"><p>
+    Wohnort: <input type="text" name="ort"><p>
+    Menge (in kg): <input type="text" size="5" name="menge"><p>
+    Apfelsorte: <br>
+        <input type="radio" name="sorte" value="Jonagold" checked>Jonagold<br>
+        <input type="radio" name="sorte" value="Gala">Gala<br>
+        <input type="radio" name="sorte" value="Elstar">Elstar<p>
+        <input type="submit" value="Abschicken">
+      <input type="reset" value="Zur&uuml;cksetzen">
+  </form>
+</body>
 </html>

@@ -6,12 +6,12 @@
     <title>Daten in MySQL-Datenbank speichern</title>
   </head>
 <body>
-<h3>Daten in eine Tabelle einf&uuml;gen</h3>
+<h3>Daten in eine Tabelle einfgen</h3>
 	<?php
-		$server = "localhost";  
-		$user   = "root";  
-		$pass   = "";
-		$db     = "obstladen";
+		$server = "localhost:3306";  
+		$user   = "php";  
+		$pass   = "7nAgjuIOS9rTMotVNKalsURBykbH0qjFjVcZWC58eVnLcH72X";
+		$db     = "schwarzesBrett";
 		$vorname 	= $_POST["vorname"];
 		$nachname 	= $_POST["nachname"];
 		$ort 		= $_POST["ort"];
@@ -19,10 +19,13 @@
 		$menge 		= $_POST["menge"];
 		$verbindung = mysqli_connect($server, $user, $pass,$db);
 		if (mysqli_connect_errno()) {
-			echo "<p><i>Die Datenbank <b>$db</b> wurde aktiviert...</i></p>";
+			echo "<p><i>Die Datenbank <b>".$db."</b> wurde aktiviert...</i></p>";
 		} else {
 			$sql  = "INSERT INTO bestellung (Vorname,Nachname,Ort,Sorte,Menge)";
-			$sql .= " VALUES ('$vorname', '$nachname', '$ort', '$sorte', $menge)";
+			$sql = $sql." VALUES ('".$vorname."', '".$nachname."', '".$ort."', '".$sorte."','". $menge."')";
+			echo "------------";
+			echo $sql;
+			echo "------------";
 			$ergebnis = mysqli_query($verbindung, $sql);
 			if($ergebnis){
 				echo "<p>Vielen Dank, Ihre Bestellung wurde gespeichert...</p>";
