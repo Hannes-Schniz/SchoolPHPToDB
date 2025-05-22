@@ -55,7 +55,8 @@ include 'db.php';
 <?php
 if (isset($ergebnis) && $ergebnis) {
     while ($zeile = mysqli_fetch_assoc($ergebnis)) {
-        echo '<div class="message">';
+        echo '<a href="change_posting_page.php?id=' . htmlspecialchars($zeile['anzeigenummer']) . '" style="text-decoration:none;color:inherit;">';
+        echo '<div class="message" href="change_posting.html?id="'.htmlspecialchars($zeile['anzeigenummer']).'">';
         echo '<div class="rubrik">' . htmlspecialchars($zeile['bezeichnung']) . '</div>';
         echo '<div class="titel">' . htmlspecialchars($zeile['anzeigeueberschrift']) . '</div>';
         echo '<span class="author">' . htmlspecialchars($zeile['name']) . '</span>';
