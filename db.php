@@ -1,27 +1,17 @@
-	<?php
-		$server = "localhost";  
-		$user   = "php";  
-		$pass   = "7nAgjuIOS9rTMotVNKalsURBykbH0qjFjVcZWC58eVnLcH72X";
-		$db     = "schwarzesBrett";
-		$verbindung = mysqli_connect($server, $user, $pass,$db);
-		if (mysqli_connect_errno()) {
-			echo "<p>Es ist ein Verbindungsfehler aufgetreten.</p>";
-		} else {
-			echo "<p>Die Verbindung mit dem Server wurde hergestellt.</p>";
-			$sql = "SELECT * FROM inserent";
-			$ergebnis = mysqli_query($verbindung, $sql);
-			if($ergebnis)	{
-				echo "<p>Die SQL-Anweisung war erfolgreich...</p>";
-				$anzahl = mysqli_num_rows($ergebnis);
-				echo "<p>In der Tabelle befinden sich $anzahl Datens�tze:</p>";
-				while ($zeile = mysqli_fetch_array($ergebnis)){
-					echo $zeile["name"] ."<br>";
-			}
+<?php
+    $server = "localhost";
+    $user   = "php";
+    $pass   = "7nAgjuIOS9rTMotVNKalsURBykbH0qjFjVcZWC58eVnLcH72X";
+    $db     = "schwarzesBrett";
+    $verbindung = mysqli_connect($server, $user, $pass, $db);
+    if (mysqli_connect_errno()) {
+        echo "<p>Es ist ein Verbindungsfehler aufgetreten.</p>";
+        $ergebnis = false;
+    } else {
+        $sql = "SELECT * FROM anzeige a join inserent i on a.inseretennummer = i.inserentennummer join rubrikzuordnung z on z.anzeigenummer = a.anzeigenummer join anzeigerubrik r on r.rubriknummer = z.rubriknummer ORDER BY a.anzeigedatum DESC ";
+        $ergebnis = mysqli_query($verbindung, $sql);
+        // Die Verbindung wird NICHT geschlossen, damit $ergebnis weiterverwendet werden kann.
+	
+	}
 
-			} else {
-				echo "SQL-Fehler!<br>SQL meldet: " .mysqli_error($verbindung);   
-			}
-			mysqli_close($verbindung);
-			echo "<p>Die Verbindung mit dem Server wurde beendet.";
-		}
-	?>
+?>
