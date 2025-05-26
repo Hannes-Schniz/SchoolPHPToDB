@@ -19,8 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validierung
     if (
         $name === '' || $email === '' || $nummer === '' ||
-        count($rubriken) < 1 || $ueberschrift === '' || $text === ''
+        count($rubriken) < 1 || count($rubriken) > 3 || $ueberschrift === '' || $text === ''
     ) {
+        header("Location: error.html");
         die('Bitte alle Felder korrekt ausfüllen.');
     }
 

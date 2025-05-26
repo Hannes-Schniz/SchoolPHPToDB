@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Neue Anzeige erstellen – Schwarzes Brett</title>
+    <style>
+      body {
+        background: #f4f4f4;
+        font-family: Arial, sans-serif;
+        margin: 0;
+      }
+      .navbar {
+        background: #222;
+        color: #fff;
+        padding: 0.5em 2em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .navbar .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+      .posting-container {
+        max-width: 500px;
+        margin: 3em auto;
+        background: #fff;
+        padding: 2.5em 2.5em 2em 2.5em;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        margin-top: 0;
+        text-align: center;
+        color: #222;
+        margin-bottom: 1.5em;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2em;
+      }
+      .form-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1em;
+      }
+      .form-label {
+        flex: 0 0 140px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0;
+        text-align: right;
+      }
+      .form-field {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+      }
+      input[type='text'],
+      input[type='email'],
+      textarea,
+      select {
+        padding: 0.6em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1em;
+        background: #f9f9f9;
+        transition: border 0.2s;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      input[type='text']:focus,
+      input[type='email']:focus,
+      textarea:focus,
+      select:focus {
+        border: 1.5px solid #4caf50;
+        outline: none;
+        background: #fff;
+      }
+      textarea {
+        min-height: 80px;
+        resize: vertical;
+      }
+      input[type='submit'] {
+        background: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 0.9em 0;
+        border-radius: 4px;
+        font-size: 1.1em;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 1em;
+        transition: background 0.2s;
+        width: 100%;
+      }
+      input[type='submit']:hover {
+        background: #388e3c;
+      }
+      .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 1.5em;
+        color: #2196f3;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 600px) {
+        .posting-container {
+          padding: 1em;
+        }
+        .form-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .form-label {
+          text-align: left;
+          margin-bottom: 0.3em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Schwarzes Brett</div>
+      <a
+        href="index.php"
+        style="color: #fff; text-decoration: none; font-weight: bold"
+        >Zurück</a
+      >
+    </nav>
+    <div class="posting-container">
+      <h2>Fehler beim Erstellen der Anzeige</h2>
+      <a class="back-link" href="index.php"
+        >&larr; Zurück zum Schwarzen Brett</a
+      >
+    </div>
+  </body>
+</html>
