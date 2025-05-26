@@ -192,7 +192,7 @@
         <div class="form-row">
           <label for="rubrik" class="form-label">Rubrik</label>
           <div class="form-field">
-            <select id="rubrik" name="rubrik" required>
+            <select id="rubrik" name="rubrik" multiple required size="3">
               <option value="">Bitte wählen...</option>
               <?php
                 // Rubriken-Array
